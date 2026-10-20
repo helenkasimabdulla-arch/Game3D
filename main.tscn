@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cti16ktvg5y1a"]
 
-[ext_resource type="Script" uid="uid://lq4c6ckaw2d7" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://263f3ucw3ltp" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cijw4x53n260l" path="res://MonsterMovement.gd" id="2_0xm2m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iloqd"]
 
@@ -10,9 +11,31 @@ size = Vector3(20, 1, 20)
 [sub_resource type="BoxMesh" id="BoxMesh_gmnp7"]
 size = Vector3(20, 1, 20)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_koyin"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v675d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw7md"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_v675d"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(13.398697, 0, 18.892157, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v675d"]
+size = Vector3(10, 3, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_koyin"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y42yo"]
+albedo_color = Color(0.4392157, 0, 0, 1)
+
 [node name="Node3D" type="Node3D" unique_id=1553864463]
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=1409171937]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1409171937 groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 script = ExtResource("1_ig7tw")
 
@@ -37,10 +60,42 @@ value = 100.0
 show_percentage = false
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=552183749]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2056388472]
 shape = SubResource("BoxShape3D_gmnp7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1245310897]
 mesh = SubResource("BoxMesh_gmnp7")
+
+[node name="Monster" type="CharacterBody3D" parent="." unique_id=1914444436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -35)
+script = ExtResource("2_0xm2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster" unique_id=355057263]
+shape = SubResource("CapsuleShape3D_koyin")
+
+[node name="body" type="MeshInstance3D" parent="Monster" unique_id=1998904372]
+mesh = SubResource("CapsuleMesh_v675d")
+surface_material_override/0 = SubResource("StandardMaterial3D_rw7md")
+
+[node name="Left eye" type="MeshInstance3D" parent="Monster/body" unique_id=1239028184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19159815, 0.6354022, -0.41162872)
+mesh = SubResource("SphereMesh_v675d")
+surface_material_override/0 = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="Right eye" type="MeshInstance3D" parent="Monster/body" unique_id=1799396111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18907139, 0.63315177, -0.41654015)
+mesh = SubResource("SphereMesh_v675d")
+surface_material_override/0 = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="floor danger zone" type="StaticBody3D" parent="." unique_id=2070864449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -35)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor danger zone" unique_id=1344566867]
+shape = SubResource("BoxShape3D_v675d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor danger zone" unique_id=866824034]
+transform = Transform3D(10, 0, 0, 0, 3, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_koyin")
+surface_material_override/0 = SubResource("StandardMaterial3D_y42yo")
