@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cti16ktvg5y1a"]
 
-[ext_resource type="Script" uid="uid://lq4c6ckaw2d7" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://baekfc5bunp8" path="res://scenes/key.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://263f3ucw3ltp" path="res://player.gd" id="1_ig7tw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iloqd"]
 
@@ -11,6 +12,9 @@ size = Vector3(20, 1, 20)
 size = Vector3(20, 1, 20)
 
 [node name="Node3D" type="Node3D" unique_id=1553864463]
+
+[node name="Key" parent="." unique_id=631233164 instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 0)
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1409171937]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
