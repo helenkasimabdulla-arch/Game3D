@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://baekfc5bunp8" path="res://scenes/key.tscn" id="1_vqsqb"]
 [ext_resource type="Script" uid="uid://263f3ucw3ltp" path="res://player.gd" id="2_hnvm8"]
 [ext_resource type="PackedScene" uid="uid://nnpeu5jqfsam" path="res://scenes/book.tscn" id="3_hnvm8"]
+[ext_resource type="PackedScene" uid="uid://dlrqnb6q4m2xf" path="res://scenes/cabinet.tscn" id="4_esgiu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iloqd"]
 
@@ -54,3 +55,6 @@ mesh = SubResource("BoxMesh_gmnp7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=883135253]
+
+[node name="Cabinet" parent="." unique_id=1511690275 instance=ExtResource("4_esgiu")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8, 0, 0)

@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dlrqnb6q4m2xf"]
+
+[ext_resource type="Script" uid="uid://d716xcu6o67k" path="res://scripts/cabinet.gd" id="1_54rbh"]
+[ext_resource type="PackedScene" uid="uid://gaa8xwwm4fir" path="res://assets/furniture/cabinet/Closet by Quaternius - BHEVb1DIuH (1).glb" id="1_xr4xt"]
+
+[sub_resource type="Animation" id="Animation_c6sfa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root Scene/RootNode/Closet_LeftDoor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root Scene/RootNode/Closet_RightDoor:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jpwin"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root Scene/RootNode/Closet_LeftDoor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -1.5707964, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root Scene/RootNode/Closet_RightDoor:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_42ncc"]
+_data = {
+&"RESET": SubResource("Animation_c6sfa"),
+&"open": SubResource("Animation_jpwin")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfni6"]
+size = Vector3(3, 3, 3)
+
+[node name="Cabinet" type="Node3D" unique_id=1511690275]
+script = ExtResource("1_54rbh")
+
+[node name="Root Scene" parent="." unique_id=572693486 instance=ExtResource("1_xr4xt")]
+
+[node name="Closet_LeftDoor" parent="Root Scene/RootNode" parent_id_path=PackedInt32Array(572693486, 1112630494) index="0" unique_id=574875412]
+transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, -0.67184937, 1.539733, 0.36768466)
+
+[node name="Closet_RightDoor" parent="Root Scene/RootNode" parent_id_path=PackedInt32Array(572693486, 1112630494) index="1" unique_id=655755643]
+transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0.67047393, 1.539733, 0.3676847)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2021013092]
+libraries/ = SubResource("AnimationLibrary_42ncc")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1014086738]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=136253815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_wfni6")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="Root Scene"]
