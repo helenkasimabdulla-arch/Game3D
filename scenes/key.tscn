@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://baekfc5bunp8"]
+
+[ext_resource type="Script" uid="uid://dn3ctdjxme8xd" path="res://scripts/key.gd" id="1_fttkb"]
+[ext_resource type="PackedScene" uid="uid://r8wyglvvjxty" path="res://assets/key/Key by Quaternius - bg6e1lfNsO.glb" id="1_yk2u2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wfni6"]
+radius = 1.5
+
+[node name="Key" type="Area3D" unique_id=631233164]
+script = ExtResource("1_fttkb")
+
+[node name="Root Scene" parent="." unique_id=185028668 instance=ExtResource("1_yk2u2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013363481, 0, 0.1259849)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1737706202]
+shape = SubResource("SphereShape3D_wfni6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

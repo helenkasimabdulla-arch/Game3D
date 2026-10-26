@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://nnpeu5jqfsam"]
+
+[ext_resource type="Script" uid="uid://c776esy6kbluj" path="res://scripts/book.gd" id="1_3wpgy"]
+[ext_resource type="PackedScene" uid="uid://2y70ltgn32ws" path="res://assets/book/Book by Quaternius - h3Wh4fxSQX.glb" id="1_ble1a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfni6"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[node name="book" type="Area3D" unique_id=246779238]
+script = ExtResource("1_3wpgy")
+
+[node name="Root Scene" parent="." unique_id=1831241036 instance=ExtResource("1_ble1a")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1135274503]
+shape = SubResource("BoxShape3D_wfni6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

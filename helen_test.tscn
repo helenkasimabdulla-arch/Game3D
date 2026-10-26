@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c3tep1typs4ga"]
+
+[ext_resource type="PackedScene" uid="uid://baekfc5bunp8" path="res://scenes/key.tscn" id="1_vqsqb"]
+[ext_resource type="Script" uid="uid://263f3ucw3ltp" path="res://player.gd" id="2_hnvm8"]
+[ext_resource type="PackedScene" uid="uid://nnpeu5jqfsam" path="res://scenes/book.tscn" id="3_hnvm8"]
+[ext_resource type="PackedScene" uid="uid://dlrqnb6q4m2xf" path="res://scenes/cabinet.tscn" id="4_esgiu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iloqd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmnp7"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gmnp7"]
+size = Vector3(20, 1, 20)
+
+[node name="Node3D" type="Node3D" unique_id=1553864463]
+
+[node name="Key" parent="." unique_id=631233164 instance=ExtResource("1_vqsqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 0)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1409171937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+script = ExtResource("2_hnvm8")
+
+[node name="Head" type="Node3D" parent="Player" unique_id=125915514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=609923824]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=852085559]
+shape = SubResource("CapsuleShape3D_iloqd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=2000590260]
+
+[node name="ProgressBar" type="ProgressBar" parent="Player/CanvasLayer" unique_id=162528185]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 4.0
+grow_vertical = 0
+value = 100.0
+show_percentage = false
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=552183749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2056388472]
+shape = SubResource("BoxShape3D_gmnp7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1245310897]
+mesh = SubResource("BoxMesh_gmnp7")
+
+[node name="book" parent="." unique_id=246779238 instance=ExtResource("3_hnvm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=883135253]
+
+[node name="Cabinet" parent="." unique_id=1511690275 instance=ExtResource("4_esgiu")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8, 0, 0)
