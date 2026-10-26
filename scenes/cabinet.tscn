@@ -1,92 +1,110 @@
 [gd_scene format=3 uid="uid://dlrqnb6q4m2xf"]
 
-[ext_resource type="Script" uid="uid://d716xcu6o67k" path="res://scripts/cabinet.gd" id="1_54rbh"]
-[ext_resource type="PackedScene" uid="uid://gaa8xwwm4fir" path="res://assets/furniture/cabinet/Closet by Quaternius - BHEVb1DIuH (1).glb" id="1_xr4xt"]
+[ext_resource type="Script" uid="uid://263f3ucw3ltp" path="res://player.gd" id="1_c6sfa"]
+[ext_resource type="Script" uid="uid://cijw4x53n260l" path="res://MonsterMovement.gd" id="2_jpwin"]
+[ext_resource type="PackedScene" uid="uid://dlrqnb6q4m2xf" path="res://scenes/cabinet.tscn" id="3_42ncc"]
 
-[sub_resource type="Animation" id="Animation_c6sfa"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Root Scene/RootNode/Closet_LeftDoor:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Root Scene/RootNode/Closet_RightDoor:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0, 0)]
-}
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iloqd"]
 
-[sub_resource type="Animation" id="Animation_jpwin"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Root Scene/RootNode/Closet_LeftDoor:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -1.5707964, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Root Scene/RootNode/Closet_RightDoor:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 1.5707964, 0)]
-}
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmnp7"]
+size = Vector3(20, 1, 20)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_42ncc"]
-_data = {
-&"RESET": SubResource("Animation_c6sfa"),
-&"open": SubResource("Animation_jpwin")
-}
+[sub_resource type="BoxMesh" id="BoxMesh_gmnp7"]
+size = Vector3(20, 1, 20)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wfni6"]
-size = Vector3(3, 3, 3)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_koyin"]
 
-[node name="Cabinet" type="Node3D" unique_id=1511690275]
-script = ExtResource("1_54rbh")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v675d"]
 
-[node name="Root Scene" parent="." unique_id=572693486 instance=ExtResource("1_xr4xt")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw7md"]
+albedo_color = Color(1, 0, 0, 1)
 
-[node name="Closet_LeftDoor" parent="Root Scene/RootNode" parent_id_path=PackedInt32Array(572693486, 1112630494) index="0" unique_id=574875412]
-transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, -0.67184937, 1.539733, 0.36768466)
+[sub_resource type="SphereMesh" id="SphereMesh_v675d"]
+radius = 0.05
+height = 0.1
 
-[node name="Closet_RightDoor" parent="Root Scene/RootNode" parent_id_path=PackedInt32Array(572693486, 1112630494) index="1" unique_id=655755643]
-transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0.67047393, 1.539733, 0.3676847)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(13.398697, 0, 18.892157, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2021013092]
-libraries/ = SubResource("AnimationLibrary_42ncc")
+[sub_resource type="BoxShape3D" id="BoxShape3D_v675d"]
+size = Vector3(10, 3, 10)
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1014086738]
+[sub_resource type="BoxMesh" id="BoxMesh_koyin"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=136253815]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("BoxShape3D_wfni6")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y42yo"]
+albedo_color = Color(0.4392157, 0, 0, 1)
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[node name="Node3D" type="Node3D" unique_id=1553864463]
 
-[editable path="Root Scene"]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1409171937 groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+script = ExtResource("1_c6sfa")
+
+[node name="Head" type="Node3D" parent="Player" unique_id=125915514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=609923824]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=852085559]
+shape = SubResource("CapsuleShape3D_iloqd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=2000590260]
+
+[node name="ProgressBar" type="ProgressBar" parent="Player/CanvasLayer" unique_id=162528185]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 4.0
+grow_vertical = 0
+value = 100.0
+show_percentage = false
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=552183749]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2056388472]
+shape = SubResource("BoxShape3D_gmnp7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1245310897]
+mesh = SubResource("BoxMesh_gmnp7")
+
+[node name="Monster" type="CharacterBody3D" parent="." unique_id=1914444436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -35)
+script = ExtResource("2_jpwin")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster" unique_id=355057263]
+shape = SubResource("CapsuleShape3D_koyin")
+
+[node name="body" type="MeshInstance3D" parent="Monster" unique_id=1998904372]
+mesh = SubResource("CapsuleMesh_v675d")
+surface_material_override/0 = SubResource("StandardMaterial3D_rw7md")
+
+[node name="Left eye" type="MeshInstance3D" parent="Monster/body" unique_id=1239028184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19159815, 0.6354022, -0.41162872)
+mesh = SubResource("SphereMesh_v675d")
+surface_material_override/0 = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="Right eye" type="MeshInstance3D" parent="Monster/body" unique_id=1799396111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18907139, 0.63315177, -0.41654015)
+mesh = SubResource("SphereMesh_v675d")
+surface_material_override/0 = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="floor danger zone" type="StaticBody3D" parent="." unique_id=2070864449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -35)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor danger zone" unique_id=1344566867]
+shape = SubResource("BoxShape3D_v675d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor danger zone" unique_id=866824034]
+transform = Transform3D(10, 0, 0, 0, 3, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_koyin")
+surface_material_override/0 = SubResource("StandardMaterial3D_y42yo")
+
+[node name="Cabinet" parent="." unique_id=1511690275 instance=ExtResource("3_42ncc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1086152, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=319608338]
+
+[node name="Cabinet2" parent="." unique_id=568718664 instance=ExtResource("3_42ncc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6091576, 1.0078726, 5.490971)
