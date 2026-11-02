@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://263f3ucw3ltp" path="res://player.gd" id="2_hnvm8"]
 [ext_resource type="PackedScene" uid="uid://nnpeu5jqfsam" path="res://scenes/book.tscn" id="3_hnvm8"]
 [ext_resource type="PackedScene" uid="uid://dlrqnb6q4m2xf" path="res://scenes/cabinet.tscn" id="4_esgiu"]
+[ext_resource type="PackedScene" uid="uid://gaa8xwwm4fir" path="res://assets/furniture/cabinet/Closet by Quaternius - BHEVb1DIuH (1).glb" id="5_m43cr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iloqd"]
 
@@ -58,3 +59,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 0)
 
 [node name="Cabinet" parent="." unique_id=1511690275 instance=ExtResource("4_esgiu")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8, 0, 0)
+
+[node name="Root Scene" parent="." unique_id=1878040472 instance=ExtResource("5_m43cr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07301736, 0.007872573, 1.2339628)
