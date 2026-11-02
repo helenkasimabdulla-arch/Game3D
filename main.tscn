@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://263f3ucw3ltp" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cijw4x53n260l" path="res://MonsterMovement.gd" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://r8wyglvvjxty" path="res://assets/key/Key by Quaternius - bg6e1lfNsO.glb" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dlrqnb6q4m2xf" path="res://scenes/cabinet.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://2y70ltgn32ws" path="res://assets/book/Book by Quaternius - h3Wh4fxSQX.glb" id="3_lquwl"]
-[ext_resource type="PackedScene" uid="uid://nnpeu5jqfsam" path="res://scenes/book.tscn" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://nnpeu5jqfsam" path="res://scenes/book.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://2y70ltgn32ws" path="res://assets/book/Book by Quaternius - h3Wh4fxSQX.glb" id="5_lquwl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iloqd"]
 
@@ -72,15 +71,6 @@ shape = SubResource("BoxShape3D_gmnp7")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1245310897]
 mesh = SubResource("BoxMesh_gmnp7")
 
-[node name="Root Scene" parent="Floor" unique_id=305425864 instance=ExtResource("2_1bvp3")]
-transform = Transform3D(0.33333334, 0, 0, 0, 0.33333334, 0, 0, 0, 0.33333334, 0.045137446, 0.5162353, 1.0234771)
-
-[node name="book" parent="Floor" unique_id=246779238 instance=ExtResource("4_7mycd")]
-transform = Transform3D(0.33333334, 0, 0, 0, 0.33333334, 0, 0, 0, 0.33333334, 0.44915247, 0.6356904, 0.7169274)
-
-[node name="Root Scene2" parent="Floor" unique_id=1920703559 instance=ExtResource("3_lquwl")]
-transform = Transform3D(0.33333334, 0, 0, 0, 0.33333334, 0, 0, 0, 0.33333334, 0.62612593, 0.6356904, 0.70727605)
-
 [node name="Monster" type="CharacterBody3D" parent="." unique_id=1914444436]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -35)
 script = ExtResource("2_0xm2m")
@@ -120,3 +110,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1086152, 0)
 
 [node name="Cabinet2" parent="." unique_id=568718664 instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6091576, 1.0078726, 5.490971)
+
+[node name="book" parent="." unique_id=246779238 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10517454, 1.4070709, 2.5987053)
+
+[node name="Root Scene" parent="." unique_id=1315219880 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.446021, 1.4070706, 6.20459)
