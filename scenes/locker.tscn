@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cfasjkcwoq5tc"]
+
+[ext_resource type="PackedScene" uid="uid://ccv30xi4eul0o" path="res://assets/furniture/Locker 1/Locker by J-Toastie - aGmZ4jQD2y (2).glb" id="1_46kxn"]
+[ext_resource type="Script" uid="uid://bey2iv7n7n8oj" path="res://scripts/locker.gd" id="2_byg57"]
+
+[sub_resource type="Animation" id="Animation_46kxn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door_Cube_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_byg57"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door_Cube_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewwd3"]
+_data = {
+&"RESET": SubResource("Animation_46kxn"),
+&"open": SubResource("Animation_byg57")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfni6"]
+size = Vector3(2, 3, 2)
+
+[node name="Locker by J-Toastie - aGmZ4jQD2y (2)" unique_id=106120000 instance=ExtResource("1_46kxn")]
+script = ExtResource("2_byg57")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=1569766995]
+libraries/ = SubResource("AnimationLibrary_ewwd3")
+
+[node name="InteractionArea" type="Area3D" parent="." index="3" unique_id=1145384143]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" index="0" unique_id=739194336]
+shape = SubResource("BoxShape3D_wfni6")

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bne2e6g8jyco2"]
+
+[ext_resource type="PackedScene" uid="uid://d12ar7d7615hs" path="res://assets/furniture/Locker 2/Open Locker by J-Toastie - AT7YLkpg6n.glb" id="1_2ubu7"]
+
+[node name="Open Locker by J-Toastie - AT7YLkpg6n" unique_id=764047166 instance=ExtResource("1_2ubu7")]
